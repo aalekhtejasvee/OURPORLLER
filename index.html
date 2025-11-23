@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Parlour | Bespoke Wedding Services</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - The Secret to Luxury Design -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-gold': '#D4AF37', // Classic Gold
+                        'brand-black': '#121212', // Rich Black (for text/accents)
+                        'brand-surface': '#1B0A3A', // Deep Black/Purple (Main Background)
+                        'brand-accent': '#7C3AED', // Secondary Vibrant Purple Accent
+                        'brand-light-surface': '#2C1B47', // Slightly lighter surface for contrast sections
+                    },
+                    fontFamily: {
+                        heading: ['"Cinzel"', 'serif'],
+                        body: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        // The existing hero image is dark, which works perfectly with the new dark theme
+                        'hero-pattern': "linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1610173825035-c472025240a7?q=80&w=2572&auto=format&fit=crop')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* FIX: Ensures anchor links land below the fixed 6rem (h-24) navigation bar */
+        html {
+            scroll-padding-top: 6rem; 
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1B0A3A; } /* Dark track */
+        ::-webkit-scrollbar-thumb { background: #D4AF37; } /* Gold thumb */
+        ::-webkit-scrollbar-thumb:hover { background: #b5952f; }
+
+        /* Professional Reveal Animation Classes */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); /* Ultra smooth ease */
+        }
+        
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered delays for grid items */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        
+        .gold-text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Image Hover Zoom Effect */
+        .zoom-container {
+            overflow: hidden;
+        }
+        .zoom-img {
+            transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .group:hover .zoom-img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-brand-surface text-white font-body antialiased overflow-x-hidden">
+
+    <!-- Navigation (Transparent to Solid) - Adjusted for better aesthetics -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-700 bg-brand-surface/70 backdrop-blur-sm border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <!-- Brand Logo -->
+                <a href="#" class="flex flex-col items-start group">
+                    <span class="font-heading text-3xl text-white tracking-[0.2em] group-hover:text-brand-gold transition duration-500">OUR</span>
+                    <span class="font-sans text-[10px] text-gray-300 tracking-[0.5em] uppercase group-hover:tracking-[0.6em] transition-all duration-500">PARLOUR</span>
+                </a>
+
+                <!-- Desktop Menu: Only Services link remains -->
+                <div class="hidden md:flex space-x-12 items-center">
+                    <a href="#experience" class="font-sans text-[11px] font-bold text-white tracking-[0.2em] hover:text-brand-gold uppercase transition relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full">EXPERIENCE</a>
+                    <a href="#services" class="font-sans text-[11px] font-bold text-white tracking-[0.2em] hover:text-brand-gold uppercase transition relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full">SERVICES</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="https://wa.me/917209260465?text=I%20wish%20to%20inquire%20about%20Our%20Parlour%20services." target="_blank" class="border border-brand-gold text-brand-gold px-8 py-3 font-sans text-xs font-bold tracking-widest hover:bg-brand-gold hover:text-brand-black transition duration-500 uppercase rounded-sm shadow-lg">
+                        Book Consultation
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Icon -->
+                <button class="md:hidden text-white text-2xl hover:text-brand-gold transition" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown: Added Experience Link -->
+        <div id="mobileMenu" class="hidden absolute top-24 left-0 w-full bg-brand-black text-white border-t border-gray-800 p-6 shadow-2xl">
+            <a href="#experience" class="block py-4 text-center font-heading tracking-widest border-b border-gray-800 hover:text-brand-gold">EXPERIENCE</a>
+            <a href="#services" class="block py-4 text-center font-heading tracking-widest border-b border-gray-800 hover:text-brand-gold">SERVICES</a>
+            <a href="https://wa.me/917209260465?text=I%20want%20to%20book%20an%20appointment%20with%20Our%20Parlour." class="block mt-4 bg-brand-gold text-brand-black text-center py-3 font-bold tracking-widest rounded-sm">BOOK NOW</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION - FIX: Added pt-24 (6rem) to push content below the fixed navbar -->
+    <header class="relative h-screen pt-24 flex items-center justify-center bg-hero-pattern bg-cover bg-center bg-no-repeat bg-fixed">
+        <div class="text-center px-4 relative z-10 max-w-5xl mx-auto">
+            <p class="text-brand-gold font-sans text-xs md:text-sm tracking-[0.4em] uppercase mb-6 reveal-up">Exquisite Wedding Services</p>
+            <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl text-white font-normal leading-tight mb-8 gold-text-shadow reveal-up delay-100">
+                Redefining <br> <span class="italic text-brand-gold font-semibold">Elegance</span>
+            </h1>
+            <p class="text-gray-200 text-lg md:text-2xl font-body italic mb-12 max-w-2xl mx-auto reveal-up delay-200 font-light tracking-wide">
+                Luxury Bridal Makeup, Nail Artistry & Bespoke Couture. <br>Delivered to your doorstep.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6 reveal-up delay-300">
+                <a href="https://wa.me/917209260465?text=Hello%20Our%20Parlour,%20I%20am%20interested%20in%20Bridal%20Services." target="_blank" class="bg-brand-gold text-brand-black px-10 py-4 font-sans text-xs font-bold tracking-[0.2em] uppercase hover:bg-white transition duration-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.5)] rounded-sm">
+                    Begin Your Journey
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-brand-gold text-xl opacity-80"></i>
+        </div>
+    </header>
+
+    <!-- INTRODUCTION: The Experience Section (Re-added) -->
+    <section id="experience" class="py-24 md:py-32 px-4 bg-brand-black text-center border-b border-t border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <p class="text-brand-gold font-sans text-xs tracking-[0.4em] uppercase mb-4 reveal-up">OUR PHILOSOPHY</p>
+            <h2 class="font-heading text-4xl md:text-5xl text-white mb-8 reveal-up delay-100">
+                The Luxury of Personalized Elegance
+            </h2>
+            <p class="font-body text-xl md:text-2xl text-gray-400 leading-relaxed reveal-up delay-200 italic font-light">
+                We don't just offer services; we craft an immersive, stress-free experience. Our Parlour is brought directly to your location, providing bespoke bridal makeup, exquisite nail artistry, and custom couture in the comfort and privacy of your space.
+            </p>
+            <p class="font-body text-xl md:text-2xl text-gray-400 leading-relaxed reveal-up delay-300 italic mt-6 font-light">
+                Every detail is managed with precision and passion, ensuring your journey to the perfect wedding look is as luxurious as the final reveal.
+            </p>
+        </div>
+    </section>
+    
+    <!-- SERVICES GRID -->
+    <section id="services" class="py-20 px-4 bg-brand-surface">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-heading text-4xl md:text-5xl text-center text-white mb-16 reveal-up">OUR SIGNATURE SERVICES</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+                
+                <!-- Service 1: Makeup (Updated Image for better luxury feel) -->
+                <div class="group relative h-[700px] overflow-hidden cursor-pointer zoom-container reveal-up delay-100">
+                    <!-- Adjustment: Lighten default overlay to make image more visible -->
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-brand-surface/70 transition duration-700 z-10"></div>
+                    <!-- Image URL for Bridal Artistry -->
+                    <img src="https://images.unsplash.com/photo-1596495578038-f9d651c8b36a?q=80&w=2070&auto=format&fit=crop" alt="Bridal Makeup Artistry" class="w-full h-full object-cover zoom-img">
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-12 z-20 text-white transform translate-y-4 group-hover:translate-y-0 transition duration-700">
+                        <h3 class="font-heading text-3xl mb-2">Bridal Artistry</h3>
+                        <p class="font-sans text-[10px] tracking-[0.3em] text-brand-gold mb-6 uppercase border-l-2 border-brand-gold pl-3">Makeup & Styling</p>
+                        <p class="h-0 group-hover:h-auto overflow-hidden transition-all duration-700 text-lg font-body italic text-gray-200 mb-6 opacity-0 group-hover:opacity-100">
+                            HD, Airbrush, and Glass Skin makeup techniques tailored to your unique skin tone.
+                        </p>
+                        <a href="https://wa.me/917209260465?text=Hi%20Our%20Parlour,%20I%20am%20interested%20in%20Bridal%20Makeup%20packages." target="_blank" class="inline-block border-b border-brand-accent pb-1 hover:text-brand-accent transition font-sans text-xs tracking-widest uppercase">
+                            Inquire Pricing <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 2: Nails (Updated Image for Nail Couture) -->
+                <div class="group relative h-[700px] overflow-hidden cursor-pointer md:mt-24 zoom-container reveal-up delay-200">
+                    <!-- Adjustment: Lighten default overlay to make image more visible -->
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-brand-surface/70 transition duration-700 z-10"></div>
+                    <!-- Image URL for Nail Couture -->
+                    <img src="https://images.unsplash.com/photo-1594902120037-333068e4c7be?q=80&w=2070&auto=format&fit=crop" alt="Luxury Nail Art" class="w-full h-full object-cover zoom-img">
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-12 z-20 text-white transform translate-y-4 group-hover:translate-y-0 transition duration-700">
+                        <h3 class="font-heading text-3xl mb-2">Nail Couture</h3>
+                        <p class="font-sans text-[10px] tracking-[0.3em] text-brand-gold mb-6 uppercase border-l-2 border-brand-gold pl-3">Extensions & Art</p>
+                        <p class="h-0 group-hover:h-auto overflow-hidden transition-all duration-700 text-lg font-body italic text-gray-200 mb-6 opacity-0 group-hover:opacity-100">
+                            Luxury Gel, Acrylics, and handcrafted nail art designed to match your bridal jewelry perfectly.
+                        </p>
+                        <a href="https://wa.me/917209260465?text=Hi%20Our%20Parlour,%20I%20am%20interested%20in%20Nail%20Art%20services." target="_blank" class="inline-block border-b border-brand-accent pb-1 hover:text-brand-accent transition font-sans text-xs tracking-widest uppercase">
+                            Book Session <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 3: Clothing (Updated Image for Bespoke Indian Design) -->
+                <div class="group relative h-[700px] overflow-hidden cursor-pointer zoom-container reveal-up delay-300">
+                    <!-- Adjustment: Lighten default overlay to make image more visible -->
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-brand-surface/70 transition duration-700 z-10"></div>
+                    <!-- Image URL for Bespoke Design -->
+                    <img src="https://images.unsplash.com/photo-1618671609101-705886d2673d?q=80&w=1974&auto=format&fit=crop" alt="Designer Indian Clothing" class="w-full h-full object-cover zoom-img">
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-12 z-20 text-white transform translate-y-4 group-hover:translate-y-0 transition duration-700">
+                        <h3 class="font-heading text-3xl mb-2">Bespoke Design</h3>
+                        <p class="font-sans text-[10px] tracking-[0.3em] text-brand-gold mb-6 uppercase border-l-2 border-brand-gold pl-3">Custom Tailoring & Boutique</p>
+                        <p class="h-0 group-hover:h-auto overflow-hidden transition-all duration-700 text-lg font-body italic text-gray-200 mb-6 opacity-0 group-hover:opacity-100">
+                            From sketching to stitching. We create Lehengas, Blouses, and Gowns that fit you like a dream.
+                        </p>
+                        <a href="https://wa.me/917209260465?text=Hi%20Our%20Parlour,%20I%20am%20interested%20in%20Custom%20Clothing%20Design." target="_blank" class="inline-block border-b border-brand-accent pb-1 hover:text-brand-accent transition font-sans text-xs tracking-widest uppercase">
+                            Start Designing <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION STRIP -->
+    <section class="py-32 bg-brand-light-surface text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-fixed" style="background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');"></div>
+        
+        <div class="relative z-10 max-w-3xl mx-auto px-4 reveal-up">
+            <h2 class="font-heading text-4xl md:text-6xl mb-8">Ready to be Iconic?</h2>
+            <p class="font-body text-xl md:text-2xl text-gray-400 mb-12 italic font-light">
+                Let's discuss your wedding theme, colors, and requirements. <br>Consultations are complimentary.
+            </p>
+            <a href="https://wa.me/917209260465?text=Hello%20Our%20Parlour,%20I%20want%20to%20discuss%20my%20wedding%20look." target="_blank" class="inline-block bg-brand-gold text-brand-black px-12 py-4 font-sans text-xs font-bold tracking-[0.2em] uppercase hover:scale-105 transition transform duration-500 hover:shadow-xl rounded-sm">
+                Chat on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-black text-white pt-24 pb-10 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+            <div class="md:col-span-2">
+                <span class="font-heading text-3xl text-white tracking-[0.15em]">OUR</span>
+                <p class="mt-8 text-gray-500 font-body text-lg leading-relaxed max-w-md italic">
+                    Our Parlour is synonymous with luxury and convenience. We bring the art of high-fashion and beauty directly to your personal space.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-sans text-[10px] font-bold tracking-[0.2em] text-brand-gold uppercase mb-8">SERVICES</h4>
+                <ul class="space-y-4 font-body text-gray-400">
+                    <li><a href="#services" class="hover:text-white transition hover:translate-x-2 inline-block duration-300">Bridal Makeup</a></li>
+                    <li><a href="#services" class="hover:text-white transition hover:translate-x-2 inline-block duration-300">Gel Nails</a></li>
+                    <li><a href="#services" class="hover:text-white transition hover:translate-x-2 inline-block duration-300">Blouse Stitching</a></li>
+                    <li><a href="#services" class="hover:text-white transition hover:translate-x-2 inline-block duration-300">Trousseau Packing</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-sans text-[10px] font-bold tracking-[0.2em] text-brand-gold uppercase mb-8">CONTACT</h4>
+                <ul class="space-y-4 font-body text-gray-400">
+                    <li class="flex items-start"><i class="fab fa-whatsapp mt-1 mr-3 text-brand-gold"></i> +91 7209260465</li>
+                    <!-- Updated Email Contact -->
+                    <li class="flex items-start"><i class="fas fa-envelope mt-1 mr-3 text-brand-gold"></i> meetaalekh@gmail.com</li>
+                    <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-brand-gold"></i> Available for destination weddings</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-900/50">
+            <p class="text-gray-700 text-xs font-sans tracking-wider">© 2024 Our Parlour. All Rights Reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="text-gray-600 hover:text-brand-gold transition duration-300 transform hover:scale-125"><i class="fab fa-instagram text-lg"></i></a>
+                <a href="#" class="text-gray-600 hover:text-brand-gold transition duration-300 transform hover:scale-125"><i class="fab fa-facebook text-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FIXED WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/917209260465?text=Hi%20Our%20Parlour,%20I%20need%20assistance." target="_blank" class="fixed bottom-8 right-8 z-50 bg-brand-accent hover:bg-brand-gold text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 group">
+        <i class="fab fa-whatsapp text-4xl group-hover:animate-bounce"></i>
+    </a>
+
+    <!-- PROFESSIONAL ANIMATION SCRIPT -->
+    <script>
+        // Intersection Observer for Professional Scroll Reveals
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Only animate once for performance
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with the 'reveal-up' class
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.reveal-up');
+            revealElements.forEach(el => observer.observe(el));
+        });
+        
+        // Navbar Glass Effect Logic
+        window.addEventListener('scroll', function() {
+            var nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                // When scrolled, make it a solid black-purple color
+                nav.classList.add('bg-brand-black', 'shadow-2xl');
+                nav.classList.remove('bg-brand-surface/70');
+            } else {
+                // At the top, make it transparent black-purple
+                nav.classList.remove('bg-brand-black', 'shadow-2xl');
+                nav.classList.add('bg-brand-surface/70');
+            }
+        });
+    </script>
+</body>
+</html>
